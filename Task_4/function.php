@@ -1,8 +1,7 @@
 <?php
 function login(){
     session_start(); 
-    $connection = mysqli_connect('localhost','root','root','task_4');
-
+    include "db.php";
     $email = $_POST['email'];
     $psw = md5($_POST['psw']);
     $query = " SELECT * FROM Final WHERE email = '$email' && password = '$psw'";
@@ -16,7 +15,7 @@ function login(){
     }
 }
 function register(){
-$connection = mysqli_connect('localhost','root','root','task_4');
+include "db.php";
 if(!$connection){
     die("Database not connected!!");
 }
@@ -61,7 +60,7 @@ else{
     }
 }
 function add_user(){
-$connection = mysqli_connect('localhost','root','root','task_4');
+include "db.php";
 if(!$connection){
     die("Database not connected!!");
 }
@@ -127,7 +126,7 @@ function assign_stud(){
     header("location:assign_student.php");
 }
 function showData(){
-    $connection = mysqli_connect('localhost','root','root','task_4');
+    include "db.php";
     $query = "SELECT * FROM Access_Type";
     $result = mysqli_query($connection,$query); 
     if(!$result){
@@ -140,7 +139,7 @@ function showData(){
     }
 }
 function addsubject(){
-    $connection = mysqli_connect('localhost','root','root','task_4');
+    include "db.php";
     $sub = $_POST['subject'];
     $query = "INSERT INTO `subjects` (`subject_name`) VALUES ('$sub')";
     $result = mysqli_query($connection,$query);
@@ -151,7 +150,7 @@ function addsubject(){
     }
 }
 function addstandard(){
-    $connection = mysqli_connect('localhost','root','root','task_4');
+    include "db.php";
     $std = $_POST['standard'];
     $query = "INSERT INTO `standards` (`standard`) VALUES ('$std')";
     $result = mysqli_query($connection,$query);
@@ -162,7 +161,7 @@ function addstandard(){
     }
 }
 function addchapter(){
-    $connection = mysqli_connect('localhost','root','root','task_4');
+    include "db.php";
     $chap = $_POST['chapter'];
     $query = "INSERT INTO `chapters` (`chapter_name`) VALUES ('$chap')";
     $result = mysqli_query($connection,$query);
@@ -209,7 +208,7 @@ function assign_stud_to_std(){
     }
 }
 function sub_update(){
-    $connection = mysqli_connect('localhost','root','root','task_4');
+    include "db.php";
 
     $subname = $_POST['sub_name'];
     $id = $_GET['edit'];
@@ -225,7 +224,7 @@ function sub_update(){
     }
 }
 function chap_update(){
-    $connection = mysqli_connect('localhost','root','root','task_4');
+    include "db.php";
 
     $chapname = $_POST['chap_name'];
     $id = $_GET['edit'];
@@ -241,7 +240,7 @@ function chap_update(){
     }
 }
 function std_update(){
-    $connection = mysqli_connect('localhost','root','root','task_4');
+    include "db.php";
 
     $stdname = $_POST['std_name'];
     $id = $_GET['edit'];
@@ -257,7 +256,7 @@ function std_update(){
     }
 }
 function update(){
-    $connection = mysqli_connect('localhost','root','root','task_4');
+    include "db.php";
 
     $firstname = $_POST['fname'];
     $lastname = $_POST['lname'];

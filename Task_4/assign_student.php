@@ -1,7 +1,7 @@
 <?php
 include "function.php";
 session_start();
-$connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+include "db.php";
 $email = $_SESSION['email'];
 $query3 = "SELECT Access_Type.access_type,Final.image, Final.first_name FROM Final INNER JOIN User_Type ON Final.id = User_Type.user_id INNER JOIN Access_Type ON User_Type.access_id = Access_Type.id WHERE Final.email = '$email'";
 $result3 = mysqli_query($connection, $query3);
@@ -101,7 +101,7 @@ if(array_key_exists("assign_stud",$_POST)){
             <label for="standard">Select Standard</label>
             <select name="standard_id" id="standard_id"> 
                 <?php 
-                $connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+                include "db.php";
                 $query ="SELECT * FROM standards";
                 $result1 = mysqli_query($connection, $query);
                 foreach ($result1 as $standards):?>
@@ -112,7 +112,7 @@ if(array_key_exists("assign_stud",$_POST)){
             <label for="student">Select Student</label>
             <select name="student_id" id="student_id"> 
                 <?php 
-                $connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+                include "db.php";
                 $check = "Student";
                 
                 $query = "SELECT User_Type.user_id,Final.first_name, Final.last_name FROM Final INNER JOIN User_Type ON Final.id = User_Type.user_id INNER JOIN Access_Type ON User_Type.access_id = Access_Type.id WHERE Access_Type.access_type = '$check'";

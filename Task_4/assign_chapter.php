@@ -1,6 +1,6 @@
 <?php
 session_start();
-$connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+include "db.php";
 $email = $_SESSION['email'];
 $query3 = "SELECT Access_Type.access_type,Final.image, Final.first_name FROM Final INNER JOIN User_Type ON Final.id = User_Type.user_id INNER JOIN Access_Type ON User_Type.access_id = Access_Type.id WHERE Final.email = '$email'";
 $result3 = mysqli_query($connection, $query3);
@@ -101,7 +101,7 @@ if(array_key_exists("assign_chap",$_POST)){
             <label for="subject">Select Subject</label>
             <select name="subject_id" id="subject_id"> <!-- Updated name attribute -->
                 <?php 
-                $connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+                include "db.php";
                 $query ="SELECT * FROM subjects";
                 $result1 = mysqli_query($connection, $query);
                 foreach ($result1 as $subjects):?>
@@ -112,7 +112,7 @@ if(array_key_exists("assign_chap",$_POST)){
             <label for="chapter">Select Chapter</label>
             <select name="chapter_id" id="chapter_id"> <!-- Updated name attribute -->
                 <?php 
-                $connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+                include "db.php";
                 $query ="SELECT * FROM chapters";
                 $result2 = mysqli_query($connection, $query);
                 foreach ($result2 as $chapters):?>

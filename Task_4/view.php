@@ -1,6 +1,6 @@
 <?php
 session_start();
-$connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+include "db.php";
 $email = $_SESSION['email'];
 $query3 = "SELECT Access_Type.access_type,Final.image, Final.first_name FROM Final INNER JOIN User_Type ON Final.id = User_Type.user_id INNER JOIN Access_Type ON User_Type.access_id = Access_Type.id WHERE Final.email = '$email'";
 $result3 = mysqli_query($connection, $query3);
@@ -115,7 +115,7 @@ if(array_key_exists("list",$_POST)){
 }elseif(array_key_exists("logout",$_POST)){
     logout();
 }
-$connection = mysqli_connect("localhost", "root", "root", "task_4");
+include "db.php";
 if ($connection->connect_error){
 die("Could not connect to the server: " . $connection->connect_error);
 }

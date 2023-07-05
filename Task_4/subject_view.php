@@ -1,7 +1,7 @@
 <?php
 include "function.php";
 session_start();
-$connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+include "db.php";
 $email = $_SESSION['email'];
 $query3 = "SELECT Access_Type.access_type,Final.image, Final.first_name FROM Final INNER JOIN User_Type ON Final.id = User_Type.user_id INNER JOIN Access_Type ON User_Type.access_id = Access_Type.id WHERE Final.email = '$email'";
 $result3 = mysqli_query($connection, $query3);
@@ -114,9 +114,9 @@ elseif(array_key_exists("add_sub",$_POST)){
     </div>
 
 <?php
-    $conn = mysqli_connect("localhost", "root", "root", "task_4");
+    include "db.php";
     $query1 = "Select * from subjects";
-    $result1 = mysqli_query($conn,$query1);
+    $result1 = mysqli_query($connection,$query1);
    if(mysqli_num_rows($result1)>0){
        ?>
        <?php if($row3['access_type'] == "Admin" || $row3['access_type'] == "Teacher"){?>

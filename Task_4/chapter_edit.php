@@ -1,5 +1,5 @@
 <?php 
-$connection = mysqli_connect('localhost','root','root','task_4');
+include "db.php";
 session_start();
 $email = $_SESSION['email'];
 $query3 = "SELECT Access_Type.access_type,Final.image, Final.first_name FROM Final INNER JOIN User_Type ON Final.id = User_Type.user_id INNER JOIN Access_Type ON User_Type.access_id = Access_Type.id WHERE Final.email = '$email'";

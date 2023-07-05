@@ -1,6 +1,6 @@
 <?php
 session_start();
-$connection = mysqli_connect('localhost', 'root', 'root', 'task_4');
+include "db.php";
 $email = $_SESSION['email'];
 $query3 = "SELECT Access_Type.access_type,Final.image, Final.first_name FROM Final INNER JOIN User_Type ON Final.id = User_Type.user_id INNER JOIN Access_Type ON User_Type.access_id = Access_Type.id WHERE Final.email = '$email'";
 $result3 = mysqli_query($connection, $query3);
@@ -113,9 +113,9 @@ if(array_key_exists("home",$_POST)){
         </div>
     </div>
 <?php
-    $conn = mysqli_connect("localhost", "root", "root", "task_4");
+   include "db.php";   
    $query1 = "Select * from Final";
-   $result1 = mysqli_query($conn,$query1);
+   $result1 = mysqli_query($connection,$query1);
    if(mysqli_num_rows($result1)>0){
        ?>
         <h2>List of All Users</h2>

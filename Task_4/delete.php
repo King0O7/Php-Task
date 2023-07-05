@@ -1,5 +1,5 @@
 <?php
-$connection = mysqli_connect("localhost", "root", "root", "task_4");
+include "db.php";
 if ($connection->connect_error){
 die("Could not connect to the server: " . $connection->connect_error);
 }
